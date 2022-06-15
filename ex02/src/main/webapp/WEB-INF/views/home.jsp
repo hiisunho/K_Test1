@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>
-	안영하세요!  수정해봄
+	hello
 </h1>
 
 <P>  서버의 시간은 ${serverTime} 입니다. </P>
