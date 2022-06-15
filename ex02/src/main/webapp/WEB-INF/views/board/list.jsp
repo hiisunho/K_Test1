@@ -53,7 +53,7 @@
                             </c:forEach>
                             
                     		<c:if test="${pageMaker.next}">
-                            	<a href="/board/list?pageNum=${pageMaker.endPage+1}&amount=${pageMaker.cri.amount}"> 다음 </a>
+                            	<a href="/board/list?pageNum=${pageMaker.endPage+1}&amount=${pageMaker.cri.amount}"> 다움 </a>
                             </c:if>
                             
                         </div>
