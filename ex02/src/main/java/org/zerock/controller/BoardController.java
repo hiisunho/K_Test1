@@ -50,25 +50,26 @@ public class BoardController {
 	}
 	
 	//조회/get?bno=13(get) -> /board/get.jsp, 수정화면 열기 /modify(get) -> board/modify.jsp
+	//변경 -> /get?bno=13&pageNum=2&amount=10
 	@GetMapping({"/get", "/modify"})
-	public void get(Long bno, Model model) {
+	public void get(Long bno, Criteria cri, Model model) {
 		model.addAttribute("board", service.get(bno));
 	}
 	
 	//삭제/remove(post) -> 요청/board/list
 	@PostMapping("/remove")
-	public String remove(Long bno, RedirectAttributes rttr) {
+	public String remove(Long bno, Criteria cri, RedirectAttributes rttr) {
 		if(service.remove(bno))
 			rttr.addFlashAttribute("state", "remove");
-		return "redirect:/board/list";
+		return "redirect:/board/list?pageNum="+cri.getPageNum()+"&amount="+cri.getAmount();
 	}
 
 	//수정/modify(post) -> 요청/board/list (수정처리 하는부분)
 	@PostMapping("/modify")		
-	public String modify(BoardVO vo, RedirectAttributes rttr) {
+	public String modify(BoardVO vo, Criteria cri, RedirectAttributes rttr) {
 		if(service.modify(vo))
 			rttr.addFlashAttribute("state", "modify");
-		return "redirect:/board/list";
+		return "redirect:/board/list?pageNum="+cri.getPageNum()+"&amount="+cri.getAmount();
 	}
 	
 	//퀴즈 /총글자개수 가져오는 서비스

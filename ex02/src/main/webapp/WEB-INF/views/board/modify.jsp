@@ -22,6 +22,9 @@
 		 					<form action="/board/modify" method="post">
 		 					
 		 						<input type="hidden" name="bno" value="${board.bno}">
+		 						<input type="hidden" name="pageNum" value="${criteria.pageNum}">
+		 						<input type="hidden" name="amount" value="${criteria.amount}">
+		 						
 		 					
 		 						<label>제목</label>
 		 						<input class="form-control" type="text" name="title" value="${board.title}">	
@@ -35,7 +38,7 @@
 		 						<input class="form-control" type="text" name="writer" value="${board.writer}">
 		 						<br>
 		 						
-		 						<button type="submit" class="btn btn-warning">완료</button>
+		 						<button type="submit" class="btn btn-warning">수정</button>
 		 						<button type="submit" id="deleteButton" class="btn btn-warning">삭제</button>
 		 						<button class="btn btn-info" onclick="location.href='/board/list'">목록보기</button>
 	 						</form>
