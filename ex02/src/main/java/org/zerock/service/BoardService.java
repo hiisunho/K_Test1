@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.RankVO;
 
 public interface BoardService {
+	//랭킹보기
+	public List<RankVO> rank();
 	//글 등록
 	public void register(BoardVO vo);
 	//글 상세보기

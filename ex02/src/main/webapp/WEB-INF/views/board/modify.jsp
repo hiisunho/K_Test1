@@ -40,7 +40,7 @@
 		 						
 		 						<button type="submit" class="btn btn-warning">수정</button>
 		 						<button type="submit" id="deleteButton" class="btn btn-warning">삭제</button>
-		 						<button class="btn btn-info" onclick="location.href='/board/list'">목록보기</button>
+		 						<button type="button" class="btn btn-info" onclick="location.href='/board/list?pageNum=${criteria.pageNum}&amount=${criteria.amount}'">목록보기</button>
 	 						</form>
 	 
                         </div>

@@ -5,8 +5,11 @@ import java.util.List;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.CountVO;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.RankVO;
 
 public interface BoardMapper {
+	//글많이 쓴 순서
+	public List<RankVO> rank();
 	
 	//목록보기
 	List<BoardVO> getList();

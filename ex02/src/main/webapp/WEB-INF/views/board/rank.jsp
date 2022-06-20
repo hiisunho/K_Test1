@@ -6,7 +6,7 @@
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">게시판</h1>
+			<h1 class="page-header">랭킹 보기</h1>
 		</div>
 		<!-- /.col-lg-12 -->
 	</div>
@@ -15,24 +15,15 @@
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					게시글 읽기
+					1위부터 5위까지
 					<!-- /.panel-heading -->
 					<div class="panel-body">
-
-
-						<label>제목</label> <input class="form-control" type="text"
-							name="title" readonly value="${board.title}"> <br> <label>내용</label>
-						<textarea class="form-control" name="content" rows="10" readonly>${board.content}</textarea>
-
-						<br> <label>작성자</label> <input class="form-control"
-							type="text" name="writer" readonly value="${board.writer}">
-						<br>
-
-						<button class="btn btn-warning"
-							onclick="location.href='/board/modify?bno=${board.bno}&pageNum=${criteria.pageNum}&amount=${criteria.amount}'">변경하기</button>
-						<button class="btn btn-info"
-							onclick="location.href='/board/list?pageNum=${criteria.pageNum}&amount=${criteria.amount}'">목록보기</button>
-
+					
+						<c:forEach items="${rank}" var="temp">
+						작성자 : ${temp.writer} 글개수 : ${temp.cn}; <br>
+						</c:forEach>
+						
+						<button type="button" onclick="location.href='/board/list?pageNum=${criteria.pageNum}&amount=${criteria.amount}'">목록보기</button>
 
 					</div>
 					<!-- /.panel-body -->

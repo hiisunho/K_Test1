@@ -5,6 +5,13 @@
  
  <mapper namespace="org.zerock.mapper.BoardMapper">
  
+ 	<select id="rank" resultType="org.zerock.domain.RankVO"> <!-- 맵퍼의 메서드명이랑 여기 id랑 동일 -->
+ 		<![CDATA[ select *
+					from (select writer, count(*) cn from tbl_board group by writer order by cn desc)
+					where rownum < 6
+ 		]]>
+ 	</select>
+ 
  	<select id="getList" resultType="org.zerock.domain.BoardVO">
  		<![CDATA[ select * from tbl_board order by bno desc
  		]]>
@@ -48,8 +55,7 @@
  		where bno=#{bno}
  	</update>
  	
- 	
- 	
+
  	
  	
  	

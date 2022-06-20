@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.CountVO;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.PageDTO;
 import org.zerock.service.BoardService;
@@ -76,5 +77,12 @@ public class BoardController {
 	@GetMapping("/count")
 	public void count(Model model) {
 		model.addAttribute("count", service.count());
+	}
+	
+	//퀴즈 /랭킹 매기기
+	@GetMapping("/rank")
+	public void rank(Criteria cri, Model model) {
+		log.info("랭킹데이터:" + service.rank());
+		model.addAttribute("rank", service.rank());
 	}
 }
