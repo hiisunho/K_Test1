@@ -17,7 +17,7 @@
                         <div class="panel-heading">
                             게시판 목록보기 <a href="/board/register">글등록</a> &nbsp;&nbsp;&nbsp;&nbsp; 총글개수(${pageMaker.total}) 
                 &nbsp;&nbsp; <a href="/board/rank?pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}">랭킹</a>
-				&nbsp;&nbsp; 중복된 글의개수
+				&nbsp;&nbsp; 중복제거된 글의 개수()
 
                         </div>
                         <!-- /.panel-heading -->
@@ -47,14 +47,30 @@
                                    </tbody>
                             </table>
                             
+                            <form action="/board/list" method="get">                     
+							   <select name="type">
+							    <option>검색조건</option>
+							   	<option ${pageMaker.cri.type =="T" ? "selected" : "" } value="T">제목</option>
+							   	<option ${pageMaker.cri.type =="C" ? "selected" : "" } value="C">내용</option>
+							   	<option ${pageMaker.cri.type =="W" ? "selected" : "" } value="W">작성자</option>
+							   	<option ${pageMaker.cri.type =="TC" ? "selected" : "" } value="TC">제목 or 내용</option>
+							   	<option ${pageMaker.cri.type =="TW" ? "selected" : "" } value="TW">제목 or 작성자</option>
+							   	<option ${pageMaker.cri.type =="CW" ? "selected" : "" } value="CW">내용 or 작성자</option>
+							   	<option ${pageMaker.cri.type =="TCW" ? "selected" : "" } value="TCW">제목 or 내용 or 작성자</option>
+							   </select>     
+							   <input type="text" name="keyword" value="${pageMaker.cri.keyword}"> 
+							   <input type="submit" value="검색">   
+						   </form>    
+						   <br>      
+                            
                             <c:if test="${pageMaker.prev}">
-                            	<a href="/board/list?pageNum=${pageMaker.startPage-1}&amount=${pageMaker.cri.amount}"> 이전 </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                            	<a href="/board/list?pageNum=${pageMaker.startPage-1}&&amount=${pageMaker.cri.amount}"> 이전 </a>&nbsp;&nbsp;&nbsp;&nbsp;
                             </c:if>
                             
                             <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="num">
-                            	<a href="/board/list?pageNum=${num}&amount=${pageMaker.cri.amount}">
-                            	<c:if test="${pageMaker.cri.pageNum == num}">
+                            	<a href="/board/list?pageNum=${num}&amount=${pageMaker.cri.amount}&type=${pageMaker.cri.type}&keyword=${pageMaker.cri.keyword}">
 <%--현재페이지를 ${param.pageNum} or ${pageMaker.cri.pageNum} or {criteria.pageNum}--%>                          	
+             	                <c:if test="${pageMaker.cri.pageNum == num}">	
                             		<b>${num}</b>
                             	</c:if>
                             	<c:if test="${pageMaker.cri.pageNum != num}">
@@ -64,7 +80,7 @@
                             </c:forEach>
                             
                     		<c:if test="${pageMaker.next}">
-                            	<a href="/board/list?pageNum=${pageMaker.endPage+1}&amount=${pageMaker.cri.amount}"> 다움 </a>
+                            	<a href="/board/list?pageNum=${pageMaker.endPage+1}&&amount=${pageMaker.cri.amount}"> 다움 </a>
                             </c:if>
                             
                         </div>

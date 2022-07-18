@@ -20,5 +20,5 @@ public interface BoardService {
 	//목록보기
 	public List<BoardVO> getList(Criteria cri);
 	//총 글개
-	public Long count();
+	public Long count(Criteria cri);
 }

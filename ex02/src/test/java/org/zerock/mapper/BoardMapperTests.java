@@ -38,6 +38,8 @@ public class BoardMapperTests {
 	@Test
 	public void testGetListWithPaging() {
 		Criteria cri = new Criteria();
+		cri.setType("TW");
+		cri.setKeyword("피");
 		mapper.getListWithPaging(cri).forEach(vo -> log.info(vo));
 	}
 	
@@ -85,7 +87,6 @@ public class BoardMapperTests {
 	
 	@Test
 	public void testCount() {
-		log.info("글개수는:" + mapper.count());
 	}
 	
 	@Test

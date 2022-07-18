@@ -10,9 +10,19 @@ public class Criteria {
 	private int pageNum = 1;
 	private int amount = 10;
 	
+	//검색에 관련된 정보 추가(검색조건 type, 검색어 keyword)
+	//ex< 제목T, 작성자W, 내용C   제목과 작성자로 검색 TW
+	private String type;
+	private String keyword;
+	
 	//기본생성자 -> 기본값 1,10
 	public Criteria() {
 	
 	}
 	//추가 생성자 -> 값을 넣어서 만들기
+	
+	//여러 검색조건인 문자열을 분리해서 문자열배열로 만들기 
+	public String[] getTypeArr() {
+		return type==null ? new String[] {} : type.split("");
+	}
 }

@@ -28,10 +28,8 @@ public class BoardController {
 	public void list(Model model, Criteria cri) {
 		log.info("list 요청");
 		model.addAttribute("list", service.getList(cri));
-		//model.addAttribute("count", service.count());
-		PageDTO pageDTO = new PageDTO(cri, 123L);
-		model.addAttribute("pageMaker", new PageDTO(cri, 123L));
-		log.info("확인용:" + pageDTO);
+//		model.addAttribute("count", service.count());
+		model.addAttribute("pageMaker", new PageDTO(cri,service.count(cri)));
 	}
 	
 	//등록하기위한 화면요청
@@ -75,10 +73,10 @@ public class BoardController {
 	
 	//퀴즈 /총글자개수 가져오는 서비스
 	@GetMapping("/count")
-	public void count(Model model) {
-		model.addAttribute("count", service.count());
+	public void count(Criteria cri, Model model) {
+		model.addAttribute("count", service.count(cri));
 	}
-	
+		
 	//퀴즈 /랭킹 매기기
 	@GetMapping("/rank")
 	public void rank(Criteria cri, Model model) {
